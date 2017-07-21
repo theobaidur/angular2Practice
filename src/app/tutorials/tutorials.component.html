@@ -6,18 +6,22 @@
         </div>
     </div>
     <div class="panel-body">
-        <ul class="list-group">
+        <ol class="list-group">
             <li class="list-group-item" *ngFor="let tutorial of tutorialList; let i = index"><a [href]="tutorial.link" [ngClass]="{even: (i%2), odd: !(i%2)}">{{tutorial.name}}</a> <i class="fa fa-close btn btn-xs btn-danger" (click)="remove(i)"></i></li>
-        </ul>  
+        </ol>
     </div>
     <div class="panel-footer">
-        <form class="form form-inline" (ngSubmit)="onSubmit()">
+        <form class="form form-inline" (ngSubmit)="onSubmit(form.value)" #form="ngForm">
             <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Tutorial Name" class="form-control" [(ngModel)]="tutorialModel.name">
+                <input type="text" id="name" #nameRef="ngModel" name="name" placeholder="Tutorial Name" class="form-control" [(ngModel)]="tutorialModel.name" required>
+
             </div>
             <div class="form-group">
-                <input type="text" id="link" name="link" placeholder="Tutorial Link" class="form-control" [(ngModel)]="tutorialModel.link">
+                <input type="text" id="link" #linkRef="ngModel" name="link" placeholder="Tutorial Link" class="form-control" [(ngModel)]="tutorialModel.link" required>
             </div>
+            <br/>
+            <p class="help-block">Name classes : {{log(nameRef)}}</p>
+            <p class="help-block">Link classes : {{linkRef.className}}</p>
             <button type="submit" class="btn btn-success">Add</button>
         </form>
     </div>

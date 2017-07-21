@@ -36,9 +36,15 @@ export class TutorialsComponent implements OnInit{
       this.tutorialList.push(this.tutorialModel);
   }
 
-  onSubmit(){
-        this.insertTutorial();
-        this.resetModel();
+  onSubmit(formData:any){
+      console.log(formData);
+      this.tutorialList.push(formData);
+        // this.insertTutorial();
+        // this.resetModel();
+  }
+
+  log(data){
+      console.log(data);
   }
 
     ngDoCheck(){
