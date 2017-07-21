@@ -1,4 +1,24 @@
-<h1 class="test">This is Tutorial Component</h1>
-<p>
-  tutorials works!
-</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>{{panelTitle}}</h3>
+        <div class="form-group">
+            <input type="text" [(ngModel)]="panelTitle" (ngModelChange)="onTitleChange($event)" class="form-control">
+        </div>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let tutorial of tutorialList; let i = index"><a [href]="tutorial.link" [ngClass]="{even: (i%2), odd: !(i%2)}">{{tutorial.name}}</a> <i class="fa fa-close btn btn-xs btn-danger" (click)="remove(i)"></i></li>
+        </ul>  
+    </div>
+    <div class="panel-footer">
+        <form class="form form-inline" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Tutorial Name" class="form-control" [(ngModel)]="tutorialModel.name">
+            </div>
+            <div class="form-group">
+                <input type="text" id="link" name="link" placeholder="Tutorial Link" class="form-control" [(ngModel)]="tutorialModel.link">
+            </div>
+            <button type="submit" class="btn btn-success">Add</button>
+        </form>
+    </div>
+</div>

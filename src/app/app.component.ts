@@ -8,4 +8,11 @@ import { InstructorsComponent } from './instructors/instructors.component';
 })
 export class AppComponent {
   title = 'app 2';
+  panel1Title = 'Tutorial list';
+  panel2Title = 'Instructor list';
+  tutorials = [];
+
+  updateTutorials(data){
+    this.tutorials = data;
+  }
 }
