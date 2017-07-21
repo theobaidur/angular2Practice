@@ -1,4 +1,6 @@
 import {Component, OnInit, EventEmitter} from '@angular/core';
+import {TutorialsService} from "../tutorials.service";
+import {Tutorial} from "../tutorial";
 
 @Component({
   selector: 'app-tutorials',
@@ -16,16 +18,12 @@ export class TutorialsComponent implements OnInit{
     public titleChange = new EventEmitter<any>();
 
     resetModel(){
-        this.tutorialModel = {
-            name:'',
-            link:''
-        }
+        this.tutorialModel = new Tutorial('','');
     }
-  constructor() {
-        this.resetModel();
-  }
+  constructor(private _tutorialService: TutorialsService) {}
 
   ngOnInit() {
+        this.tutorialList = this._tutorialService.getList();
   }
 
   remove(index:any){
@@ -38,7 +36,7 @@ export class TutorialsComponent implements OnInit{
 
   onSubmit(formData:any){
       console.log(formData);
-      this.tutorialList.push(formData);
+      this._tutorialService.addTutorial(formData);
         // this.insertTutorial();
         // this.resetModel();
   }
@@ -46,14 +44,6 @@ export class TutorialsComponent implements OnInit{
   log(data){
       console.log(data);
   }
-
-    ngDoCheck(){
-        // console.log("checking");
-      if(this.tutorialList.length != this.oldTutorialList.length){
-          this.tutorialListChange.emit(this.tutorialList);
-          this.oldTutorialList = this.tutorialList;
-      }
-    }
 
     onTitleChange(data){
         this.titleChange.emit(data);
