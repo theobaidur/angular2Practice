@@ -46,7 +46,7 @@ export class TutorialsComponent implements OnInit{
   }
 
     onTitleChange(data){
-        this.titleChange.emit(data);
+       // this.titleChange.emit(data);
     }
 
 

@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>{{panelTitle}}</h4>
+    <input type="text" class="form-control" [(ngModel)]="panelTitle" (ngModelChange)="onTitleChange($event)">
+  </div>
+  <div class="panel-body">
+    <ol class="list-group">
+      <li class="list-group-item" *ngFor="let class of classList; let i=index">
+        <p><strong>Name: </strong> {{class.name}}</p>
+        <p><strong>Capacity: </strong> {{class.capacity}}</p>
+        <p>
+          <button class="btn btn-error btn-sm btn-danger" (click)="removeItem(i)" >
+            <i class="fa fa-close"></i>
+          </button>
+        </p>
+      </li>
+    </ol>
+  </div>
+  <div class="panel-footer">
+    <form class="form form-inline" #classForm="ngForm" (ngSubmit)="onSubmit(classForm.value)">
+      <div class="form-group" [ngClass]="{'has-error': classNameRef.errors && (classNameRef.touched || classNameRef.dirty),'has-success': !classNameRef.errors && (classNameRef.touched || classNameRef.dirty)}">
+        <input type="text" class="form-control" name="name" required minlength="4" #classNameRef="ngModel" [(ngModel)]="classModel.name">
+        <div class="help-block" *ngIf="classNameRef.errors && (classNameRef.touched || classNameRef.dirty)">
+          <p *ngIf="classNameRef.errors.required">This field is requied</p>
+          <p *ngIf="classNameRef.errors.minlength">Min length is 4</p>
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': classCapacityRef.errors && (classCapacityRef.touched || classCapacityRef.dirty), 'has-success': !classCapacityRef.errors && (classCapacityRef.touched || classCapacityRef.dirty)}">
+        <input type="text" class="form-control" name="capacity" required [(ngModel)]="classModel.capacity" #classCapacityRef="ngModel">
+        <div class="help-block" *ngIf="classCapacityRef.errors && (classCapacityRef.dirty || classCapacityRef.touched)">
+          <p *ngIf="classCapacityRef.errors.required">This field is required</p>
+        </div>
+      </div>
+      <button class="btn btn-success" type="submit" [disabled]="classForm.invalid">Add</button>
+    </form>
+  </div>
+</div>
