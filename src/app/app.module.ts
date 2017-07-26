@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { TutorialsComponent } from './tutorials/tutorials.component';
@@ -10,6 +13,11 @@ import { ClassComponent } from './class/class.component';
 import { CampusComponent } from './campus/campus.component';
 import { LocationComponent } from './location/location.component';
 import { ShoolComponent } from './school/shool.component';
+let routes = [
+    {path: 'classes', component: ClassComponent},
+    {path: 'tutorials', component: TutorialsComponent},
+    {path: 'instructors', component: InstructorsComponent},
+    ]
 
 @NgModule({
   declarations: [
@@ -24,8 +32,10 @@ import { ShoolComponent } from './school/shool.component';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

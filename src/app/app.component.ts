@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.tutorials = this._tutorialService.getList();
+    this._tutorialService.getList();
     this.classList = this._classService.getList();
   }
   updateTutorials(data){

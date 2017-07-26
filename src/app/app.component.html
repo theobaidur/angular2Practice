@@ -5,26 +5,13 @@
       Welcome to {{title}}!!
     </h1>
   </div>
-  <div class="col-md-6">
-    <div class="form-group">
-      <input class="form-control" [(ngModel)]="panel1Title" type="text" placeholder="Panel 1 title" #p1title>
-      <p>Number of tutorials: {{tutorials.length}}</p>
-    </div>
-    <div class="form-group">
-      <input class="form-control" [(ngModel)]="panel2Title" type="text" placeholder="Panel 2 title" #p2title (keyup)="0">
-    </div>
-    <div class="form-group">
-      <input class="form-control" [(ngModel)]="panel3Title" type="text" placeholder="Panel 3 title" #p3title>
-      <p>Number of classes: {{classList.length}}</p>
-    </div>
-  </div>
   <div class="col-md-12">
-    <app-class [panelTitle]="panel3Title" (titleChange)="panel3Title=$event"></app-class>
-
-    <app-tutorials [panelTitle]="panel1Title" (tutorialListChange)="updateTutorials($event)" (titleChange)="panel1Title=$event"></app-tutorials>
-    <app-instructors [panelTitle]="panel2Title"></app-instructors>
-
-
+    <ul class="nav">
+      <li routerLinkActive="active"><a routerLink="/classes">Classes</a></li>
+      <li routerLinkActive="active"><a routerLink="/tutorials">Tutorials</a></li>
+      <li routerLinkActive="active"><a routerLink="/instructors">Instructors</a></li>
+    </ul>
+    <router-outlet></router-outlet>
   </div>
 </div>
 

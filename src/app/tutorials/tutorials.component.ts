@@ -23,7 +23,7 @@ export class TutorialsComponent implements OnInit{
   constructor(private _tutorialService: TutorialsService) {}
 
   ngOnInit() {
-        this.tutorialList = this._tutorialService.getList();
+        this._tutorialService.getList().subscribe(data=>this.tutorialList = data);
   }
 
   remove(index:any){
@@ -36,7 +36,7 @@ export class TutorialsComponent implements OnInit{
 
   onSubmit(formData:any){
       console.log(formData);
-      this._tutorialService.addTutorial(formData);
+      this._tutorialService.addTutorial(formData).subscribe(data=>this.tutorialList = data);
         // this.insertTutorial();
         // this.resetModel();
   }

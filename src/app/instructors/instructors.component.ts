@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {Tutorial} from "../tutorial";
 import {TutorialsService} from "../tutorials.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-instructors',
@@ -12,7 +13,7 @@ import {TutorialsService} from "../tutorials.service";
 export class InstructorsComponent implements OnInit {
   public panelTitle = "Instructors list";
   public instructorList = [];
-  public turialList:Array<Tutorial> = [];
+  public turialList:Array<any> = [];
 
   public instructorForm = new FormGroup({
     name: new FormControl(),
@@ -27,7 +28,7 @@ export class InstructorsComponent implements OnInit {
   constructor(private _tutorialService: TutorialsService) { }
 
   ngOnInit() {
-    this.turialList = this._tutorialService.getList();
+    this._tutorialService.getList().subscribe(data => this.turialList = data);
   }
 
   getTutorialInfo(index:number){
