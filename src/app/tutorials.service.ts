@@ -20,10 +20,13 @@ export class TutorialsService {
   }
 
   getOne(index:number){
+    console.log(this.tutorials);
       return this.tutorials[index] || {};
   }
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http) {
+    this.getList().subscribe(data=>this.tutorials=data);
+  }
 
 }
 

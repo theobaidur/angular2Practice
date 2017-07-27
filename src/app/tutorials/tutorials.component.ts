@@ -17,6 +17,7 @@ export class TutorialsComponent implements OnInit{
     public tutorialListChange = new EventEmitter<any>();
     public titleChange = new EventEmitter<any>();
 
+
     resetModel(){
         this.tutorialModel = new Tutorial('','');
     }
@@ -24,6 +25,7 @@ export class TutorialsComponent implements OnInit{
 
   ngOnInit() {
         this._tutorialService.getList().subscribe(data=>this.tutorialList = data);
+
   }
 
   remove(index:any){

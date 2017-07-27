@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import { InstructorsComponent } from './instructors/instructors.component';
 import {TutorialsService} from "./tutorials.service";
+import {InstructorsService} from "./instructors.service";
 import {ClassService} from './class.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [TutorialsService, ClassService]
+  providers: [TutorialsService, ClassService, InstructorsService]
 })
 export class AppComponent implements OnInit{
   title = 'app 2';

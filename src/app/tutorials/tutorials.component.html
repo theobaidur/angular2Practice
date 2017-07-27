@@ -7,7 +7,7 @@
     </div>
     <div class="panel-body">
         <ol class="list-group">
-            <li class="list-group-item" *ngFor="let tutorial of tutorialList; let i = index"><a [href]="tutorial.link" [ngClass]="{even: (i%2), odd: !(i%2)}">{{tutorial.name}}</a> <i class="fa fa-close btn btn-xs btn-danger" (click)="remove(i)"></i></li>
+            <li class="list-group-item" *ngFor="let tutorial of tutorialList; let i = index"><a routerLink="/instructors/{{i}}" [ngClass]="{even: (i%2), odd: !(i%2)}">{{tutorial.name}}</a> <i class="fa fa-close btn btn-xs btn-danger" (click)="remove(i)"></i></li>
         </ol>
     </div>
     <div class="panel-footer">

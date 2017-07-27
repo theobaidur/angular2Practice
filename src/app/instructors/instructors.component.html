@@ -4,13 +4,8 @@
   </div>
   <div class="panel-body">
     <ol class="list-group">
-      <li class="list-group-item" *ngFor="let instructor of instructorList">
-        <strong>Name: </strong>{{instructor.name}}<br/>
-        <strong>Email: </strong>{{instructor.email}}<br/>
-        <strong>Tutorial: </strong>{{getTutorialInfo(instructor.tutorial).name}} {{getTutorialInfo(instructor.tutorial).link}}<br/>
-        <strong>Facebook: </strong>{{instructor.socialMedia.facebook}}<br/>
-        <strong>Twitter: </strong>{{instructor.socialMedia.twitter}}<br/>
-        <strong>GooglePlus: </strong>{{instructor.socialMedia.google}}<br/>
+      <li class="list-group-item" *ngFor="let instructor of instructorList; let i=index" [ngClass]="{active: isActive(i)}">
+        <a routerLink="/instructors/{{i}}">{{instructor.name}}</a>
       </li>
     </ol>
   </div>

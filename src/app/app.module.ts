@@ -2,37 +2,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-
+// import { RouterModule } from '@angular/router';
+import { AppRoutingModule, routingComponents } from './app-routing/app-routing.module';
 
 import { AppComponent } from './app.component';
-import { TutorialsComponent } from './tutorials/tutorials.component';
-import { InstructorsComponent } from './instructors/instructors.component';
+
 import { StudentComponent } from './student/student.component';
-import { ClassComponent } from './class/class.component';
 import { CampusComponent } from './campus/campus.component';
 import { LocationComponent } from './location/location.component';
 import { ShoolComponent } from './school/shool.component';
-let routes = [
-    {path: 'classes', component: ClassComponent},
-    {path: 'tutorials', component: TutorialsComponent},
-    {path: 'instructors', component: InstructorsComponent},
-    ]
+import { ClassDetailComponent } from './class-detail/class-detail.component';
+import { InstructorDetailsComponent } from './instructor-details/instructor-details.component';
+import { TutorialDetailsComponent } from './tutorial-details/tutorial-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TutorialsComponent,
-    InstructorsComponent,
     StudentComponent,
-    ClassComponent,
     CampusComponent,
     LocationComponent,
-    ShoolComponent
+    ShoolComponent,
+    routingComponents,
+    ClassDetailComponent,
+    InstructorDetailsComponent,
+    TutorialDetailsComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule

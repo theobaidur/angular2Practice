@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import {Tutorial} from "../tutorial";
 import {TutorialsService} from "../tutorials.service";
 import {Observable} from "rxjs";
+import {InstructorsService} from "../instructors.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-instructors',
@@ -14,6 +16,7 @@ export class InstructorsComponent implements OnInit {
   public panelTitle = "Instructors list";
   public instructorList = [];
   public turialList:Array<any> = [];
+  public currentInstructor:any = null;
 
   public instructorForm = new FormGroup({
     name: new FormControl(),
@@ -25,10 +28,14 @@ export class InstructorsComponent implements OnInit {
       google: new FormControl()
     })
   });
-  constructor(private _tutorialService: TutorialsService) { }
+  constructor(private _tutorialService: TutorialsService, private _instructorService:InstructorsService, private route:ActivatedRoute) { }
 
   ngOnInit() {
     this._tutorialService.getList().subscribe(data => this.turialList = data);
+    this.instructorList = this._instructorService.getList();
+    this.route.params.subscribe((param: Params)=>{
+      this.currentInstructor = param['id'];
+    });
   }
 
   getTutorialInfo(index:number){
@@ -36,8 +43,12 @@ export class InstructorsComponent implements OnInit {
   }
 
   onSubmit(){
-    this.instructorList.push(this.instructorForm.value);
-    console.log(this.instructorForm.value);
+    this._instructorService.addClass(this.instructorForm.value);
+
+  }
+
+  isActive(index:number){
+    return index == this.currentInstructor;
   }
 
 }

@@ -6,13 +6,10 @@
   <div class="panel-body">
     <ol class="list-group">
       <li class="list-group-item" *ngFor="let class of classList; let i=index">
-        <p><strong>Name: </strong> {{class.name}}</p>
-        <p><strong>Capacity: </strong> {{class.capacity}}</p>
-        <p>
-          <button class="btn btn-error btn-sm btn-danger" (click)="removeItem(i)" >
-            <i class="fa fa-close"></i>
-          </button>
-        </p>
+        <a routerLink="/classes/{{i}}">{{class.name}}</a>
+        <button class="btn btn-error btn-sm btn-danger" (click)="removeItem(i)" >
+          <i class="fa fa-close"></i>
+        </button>
       </li>
     </ol>
   </div>

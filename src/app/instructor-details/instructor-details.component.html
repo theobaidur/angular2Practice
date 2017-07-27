@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Title</h4>
+    </div>
+    <div class="panel-body">
+        <strong>Name: </strong>{{instructor.name}}<br/>
+        <strong>Email: </strong>{{instructor.email}}<br/>
+        <strong>Tutorial: </strong>{{getTutorialInfo(instructor.tutorial).name}} {{getTutorialInfo(instructor.tutorial).link}}<br/>
+        <strong>Facebook: </strong>{{instructor.socialMedia.facebook}}<br/>
+        <strong>Twitter: </strong>{{instructor.socialMedia.twitter}}<br/>
+        <strong>GooglePlus: </strong>{{instructor.socialMedia.google}}<br/>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-info" (click)="goPrev()" >Prev</button>
+        <button class="btn btn-info" (click)="goNext()" >Next</button>
+        <button class="btn btn-info pull-right" (click)="goBack()" >Back</button>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
